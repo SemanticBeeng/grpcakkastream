@@ -1,17 +1,22 @@
 import scalapb.compiler.Version.scalapbVersion
 
 organization in ThisBuild := "beyondthelines"
+
 version in ThisBuild := "0.1.0"
+
 bintrayOrganization in ThisBuild := Some(sys.props.get("bintray.organization").getOrElse("beyondthelines"))
+
 bintrayRepository in ThisBuild := "maven"
+
 bintrayPackageLabels in ThisBuild := Seq("scala", "protobuf", "grpc", "akka")
+
 licenses in ThisBuild := ("MIT", url("http://opensource.org/licenses/MIT")) :: Nil
 
-scalaVersion in ThisBuild := "2.12.4"
+scalaVersion in ThisBuild := "2.11.12"
 
 lazy val runtime = (project in file("runtime"))
   .settings(
-    crossScalaVersions := Seq("2.12.4", "2.11.11"),
+    //crossScalaVersions := Seq("2.12.4", "2.11.11"),
     name := "GrpcAkkaStreamRuntime",
     libraryDependencies ++= Seq(
       "com.thesamet.scalapb"   %% "scalapb-runtime-grpc" % scalapbVersion,
@@ -21,7 +26,7 @@ lazy val runtime = (project in file("runtime"))
 
 lazy val generator = (project in file("generator"))
   .settings(
-    crossScalaVersions := Seq("2.12.4", "2.10.6"),
+    //crossScalaVersions := Seq("2.12.4", "2.10.6"),
     name := "GrpcAkkaStreamGenerator",
     libraryDependencies ++= Seq(
       "com.thesamet.scalapb"   %% "compilerplugin"       % scalapbVersion,
